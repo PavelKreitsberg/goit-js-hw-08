@@ -13,19 +13,19 @@ const userData = {
     massage: '',
 }
 
-refs.formInput.addEventListener('input', (e) => {
+refs.formInput.addEventListener('input', throttle((e) => {
 
     userData.email = e.currentTarget.value
 
     localStorage.setItem(refs.key, JSON.stringify(userData));
-})
+}, 500))
 
-refs.formTextarea.addEventListener('input', (e) => {
+refs.formTextarea.addEventListener('input', throttle((e) => {
 
     userData.massage = e.currentTarget.value
 
     localStorage.setItem(refs.key, JSON.stringify(userData));
-})
+}, 500))
 
 refs.form.addEventListener('submit', (e) => {
     e.preventDefault();
