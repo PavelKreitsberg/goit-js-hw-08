@@ -26,14 +26,14 @@ populateFormFields();
 
 refs.formInput.addEventListener('input', throttle((e) => {
 
-    userData.email = e.currentTarget.value
+    userData.email = e.target.value
 
     localStorage.setItem(refs.KEY, JSON.stringify(userData));
 }, 500))
 
 refs.formTextarea.addEventListener('input', throttle((e) => {
 
-    userData.massage = e.currentTarget.value
+    userData.massage = e.target.value
 
     localStorage.setItem(refs.KEY, JSON.stringify(userData));
 }, 500))
