@@ -12,7 +12,7 @@ const userData = {}
 
 const populateFormFields = () => {
 
-    savedData = localStorage.getItem(refs.KEY)
+    const savedData = localStorage.getItem(refs.KEY)
 
     if (savedData) {
 
