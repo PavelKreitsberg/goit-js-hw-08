@@ -1,4 +1,3 @@
-// const throttle = require('lodash.throttle');
 import throttle from "lodash.throttle";
 
 refs = {
@@ -9,31 +8,29 @@ refs = {
     formBtnSubmit: document.querySelector('.feedback-form button'),
 }
 
-const userData = {
-    email: '',
-    massage: '',
-}
+const userData = {}
 
 const populateFormFields = () => {
-    if (localStorage.getItem(refs.KEY)) {
-        refs.formInput.value = JSON.parse(localStorage.getItem(refs.KEY)).email;
 
-        refs.formTextarea.value = JSON.parse(localStorage.getItem(refs.KEY)).massage;
+    savedData = localStorage.getItem(refs.KEY)
+
+    if (savedData) {
+
+        const {email, message} = JSON.parse(savedData)
+        
+        refs.form.email.value = email;
+        refs.form.message.value = message;
+        userData.email = email;
+        userData.message = message;
     }
 }
 
 populateFormFields();
 
-refs.formInput.addEventListener('input', throttle((e) => {
 
-    userData.email = e.target.value
+refs.form.addEventListener('input', throttle((e) => {
 
-    localStorage.setItem(refs.KEY, JSON.stringify(userData));
-}, 500))
-
-refs.formTextarea.addEventListener('input', throttle((e) => {
-
-    userData.massage = e.target.value
+    userData[e.target.name] = e.target.value
 
     localStorage.setItem(refs.KEY, JSON.stringify(userData));
 }, 500))
