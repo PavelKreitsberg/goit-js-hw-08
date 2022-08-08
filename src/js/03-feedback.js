@@ -38,9 +38,18 @@ refs.form.addEventListener('input', throttle((e) => {
 refs.form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    console.log(JSON.parse(localStorage.getItem(refs.KEY)));
+    if (refs.formInput.value === '' || refs.formTextarea.value === '') {
+        alert('Fill the form`s fields');
+    } else {
+        
+        console.log(JSON.parse(localStorage.getItem(refs.KEY)));
 
-    e.currentTarget.reset();
+        userData.email = '';
+        userData.message = '';
+        
+        e.currentTarget.reset();
+        
+        localStorage.removeItem(refs.KEY);
+    }
 
-    localStorage.removeItem(refs.KEY);
 })
