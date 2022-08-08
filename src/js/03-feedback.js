@@ -8,7 +8,10 @@ const refs = {
     formBtnSubmit: document.querySelector('.feedback-form button'),
 }
 
-const userData = {}
+const userData = {
+    email: '',
+    message: '',
+}
 
 const populateFormFields = () => {
 
